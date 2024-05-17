@@ -1,23 +1,23 @@
 package model;
 
-public class modelHopdong {
+public class modelKetthuc {
     private int id;
     private String Masinhvien;
     private String Hoten;
     private String Lop;
     private String Phong;
-    private String Ngayvao;
+    private String Ngayketthuc;
 
-    public modelHopdong() {
+    public modelKetthuc() {
     }
 
-    public modelHopdong(int id, String Masinhvien, String Hoten, String Lop, String Phong, String Ngayvao) {
+    public modelKetthuc(int id, String Masinhvien, String Hoten, String Lop, String Phong, String Ngayketthuc) {
         this.id = id;
         this.Masinhvien = Masinhvien;
         this.Hoten = Hoten;
         this.Lop = Lop;
         this.Phong = Phong;
-        this.Ngayvao = Ngayvao;
+        this.Ngayketthuc = Ngayketthuc;
     }
 
     public int getId() {
@@ -60,12 +60,12 @@ public class modelHopdong {
         this.Phong = Phong;
     }
 
-    public String getNgayvao() {
-        return Ngayvao;
+    public String getNgayketthuc() {
+        return Ngayketthuc;
     }
 
-    public void setNgayvao(String Ngayvao) {
-        this.Ngayvao = Ngayvao;
+    public void setNgayketthuc(String Ngayketthuc) {
+        this.Ngayketthuc = Ngayketthuc;
     }
     
 }

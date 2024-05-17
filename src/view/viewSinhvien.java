@@ -98,7 +98,7 @@ public class viewSinhvien extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtHT, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                     .addComponent(txtKhoa, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLop)
                     .addComponent(txtMSV))
@@ -110,7 +110,7 @@ public class viewSinhvien extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbGT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbGT, 0, 124, Short.MAX_VALUE)
                     .addComponent(txtCCCD)
                     .addComponent(txtSDT)
                     .addComponent(txtDC))
@@ -245,17 +245,11 @@ public class viewSinhvien extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout Main5Layout = new javax.swing.GroupLayout(Main5);
@@ -265,14 +259,11 @@ public class viewSinhvien extends javax.swing.JPanel {
             .addGroup(Main5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Main5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Main5Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(Main5Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Main5Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         Main5Layout.setVerticalGroup(
@@ -291,7 +282,7 @@ public class viewSinhvien extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Main5, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
+            .addComponent(Main5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,34 +299,28 @@ public class viewSinhvien extends javax.swing.JPanel {
         String cccd = txtCCCD.getText();
         String sdt = txtSDT.getText();
         String dc = txtDC.getText();
-        if (msv.isEmpty() || ht.isEmpty() || khoa.isEmpty() || lop.isEmpty() || gt.isEmpty() || cccd.isEmpty() || sdt.isEmpty() || dc.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Vui lòng chọn thông tin cần sửa");
-            return;
-        } 
-        if (controllerSinhvien.Checktrungma(sv)){
-            sv.setMasinhvien(msv);
-            JOptionPane.showMessageDialog(null, "Mã sinh viên đã tồn tại. Vui lòng nhập mã khác.");
+
+        // Kiểm tra xem các trường thông tin có trống không
+        if (msv.isEmpty() || ht.isEmpty() || khoa.isEmpty() || lop.isEmpty() || gt.isEmpty() || cccd.isEmpty() || sdt.isEmpty() || dc.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng điền đầy đủ thông tin");
             return;
         }
-    
-        //Chỉ nhập số cho cccd và số điện thoại
-        if (controllerSinhvien.isNumeric(sv)) {
-            sv.setCCCD(cccd);
-            sv.setSodienthoai(sdt);
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng định dạng số CCCD và Số điện thoại");
-            return;
-        }
+
+        // Cập nhật các thuộc tính của đối tượng sv
+        sv.setMasinhvien(msv);
         sv.setHoten(ht);
         sv.setKhoa(khoa);
         sv.setLop(lop);
         sv.setGioitinh(gt);
+        sv.setCCCD(cccd);
+        sv.setSodienthoai(sdt);
         sv.setDiachi(dc);
 
         boolean success = controllerSinhvien.Sua(sv);
-        if (success){
-            JOptionPane.showMessageDialog(null,"Sửa sinh viên thành công" );
-            Hienthi();
-        }else{
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Sửa sinh viên thành công");
+            Hienthi(); 
+        } else {
             JOptionPane.showMessageDialog(null, "Sửa sinh viên thất bại");
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -354,14 +339,14 @@ public class viewSinhvien extends javax.swing.JPanel {
             return;
         }
 
-        // Kiểm tra trùng mã sinh viên
-    
-        //
-        if (controllerSinhvien.Checktrungsdt(sv)){
-            sv.setSodienthoai(sdt);
-            JOptionPane.showMessageDialog(null, "sdt da ton tai. Vui lòng nhập mã khác.");
+        // Check trùng mã sinh viên
+        if (controllerSinhvien.Checktrungma(sv)){
+            sv.setMasinhvien(msv);
+            JOptionPane.showMessageDialog(null, "Mã sinh viên đã tồn tại. Vui lòng nhập mã khác.");
             return;
         }
+        
+        //Chỉ nhập số cho cccd và số điện thoại
         if (controllerSinhvien.isNumeric(sv)) {
             sv.setCCCD(cccd);
             sv.setSodienthoai(sdt);

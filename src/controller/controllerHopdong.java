@@ -48,13 +48,14 @@ public class controllerHopdong {
     public static boolean Them(modelHopdong hd){
         try {
             Connection con = config.getConnection();
-            String sql = "INSERT INTO hopdong (Masinhvien,Hoten,Lop,Phong,Ngayvao) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO hopdong (id, Masinhvien,Hoten,Lop,Phong,Ngayvao) VALUES (?,?,?,?,?,?)";
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, hd.getMasinhvien());
-            pstm.setString(2, hd.getHoten());
-            pstm.setString(3, hd.getLop());
-            pstm.setString(4, hd.getPhong());
-            pstm.setString(5, hd.getNgayvao());
+            pstm.setInt(1, hd.getId());
+            pstm.setString(2, hd.getMasinhvien());
+            pstm.setString(3, hd.getHoten());
+            pstm.setString(4, hd.getLop());
+            pstm.setString(5, hd.getPhong());
+            pstm.setString(6, hd.getNgayvao());
             pstm.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -73,8 +74,10 @@ public class controllerHopdong {
             pstm.setString(3, hd.getPhong());
             pstm.setString(4, hd.getNgayvao());
             pstm.setString(5, hd.getMasinhvien());
-            pstm.executeUpdate();
-            return true;
+            int rowsAffected = pstm.executeUpdate();
+            pstm.close();
+            con.close();
+            return rowsAffected > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }

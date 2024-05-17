@@ -72,12 +72,12 @@ public class controllerDangnhap {
     public static boolean sua(modelDangnhap dn) {
         try {
             Connection con = config.getConnection();
-            String sql = "UPDATE dangnhap SET taikhoan=?, matkhau=?, email=? WHERE hoten=?";
+            String sql = "UPDATE dangnhap SET hoten=?, taikhoan=?, matkhau=? WHERE email=?";
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, dn.getTaikhoan());
-            pstm.setString(2, dn.getMatkhau());
-            pstm.setString(3, dn.getEmail());
-            pstm.setString(4, dn.getHoten());
+            pstm.setString(1, dn.getHoten());
+            pstm.setString(2, dn.getTaikhoan());
+            pstm.setString(3, dn.getMatkhau());
+            pstm.setString(4, dn.getEmail());
             int rowsAffected = pstm.executeUpdate();
             pstm.close();
             con.close();

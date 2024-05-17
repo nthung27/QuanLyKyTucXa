@@ -13,9 +13,6 @@ public class controllerSinhvien {
         return new controllerSinhvien();
     }
 
-    public static boolean Checktrungsdt(modelSinhvien sv) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     //Đếm số lượng sinh viên
     public int getSl() {
         int soluong = 0;
@@ -37,16 +34,17 @@ public class controllerSinhvien {
     public static boolean Them(modelSinhvien sv){
         try {
             Connection con = config.getConnection();
-            String sql = "INSERT INTO sinhvien (Masinhvien,Hoten,Khoa,Lop,Gioitinh,CCCD,Sodienthoai,Diachi) VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO sinhvien (id,Masinhvien,Hoten,Khoa,Lop,Gioitinh,CCCD,Sodienthoai,Diachi) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, sv.getMasinhvien());
-            pstm.setString(2, sv.getHoten());
-            pstm.setString(3, sv.getKhoa());
-            pstm.setString(4, sv.getLop());
-            pstm.setString(5, sv.getGioitinh());
-            pstm.setString(6, sv.getCCCD());
-            pstm.setString(7, sv.getSodienthoai());
-            pstm.setString(8, sv.getDiachi());
+            pstm.setInt(1, sv.getId());
+            pstm.setString(2, sv.getMasinhvien());
+            pstm.setString(3, sv.getHoten());
+            pstm.setString(4, sv.getKhoa());
+            pstm.setString(5, sv.getLop());
+            pstm.setString(6, sv.getGioitinh());
+            pstm.setString(7, sv.getCCCD());
+            pstm.setString(8, sv.getSodienthoai());
+            pstm.setString(9, sv.getDiachi());
             pstm.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -54,7 +52,7 @@ public class controllerSinhvien {
         }
         return false;
     }
-    //Sửa dữ liệu sinh viên
+    // Sửa dữ liệu sinh viên
     public static boolean Sua(modelSinhvien sv) {
         try {
             Connection con = config.getConnection();
@@ -68,13 +66,16 @@ public class controllerSinhvien {
             pstm.setString(6, sv.getSodienthoai());
             pstm.setString(7, sv.getDiachi());
             pstm.setString(8, sv.getMasinhvien());
-            pstm.executeUpdate();
-            return true;
+            int rowsAffected = pstm.executeUpdate();
+            pstm.close();
+            con.close();
+            return rowsAffected > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
+
     //Xóa dữ liệu sinh viên
     public static boolean Xoa(modelSinhvien sv) {
         try {
@@ -98,7 +99,7 @@ public class controllerSinhvien {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
-                modelSinhvien st = new modelSinhvien(rs.getString("Masinhvien"),rs.getString("Hoten"),rs.getString("Khoa"),rs.getString("Lop"),rs.getString("Gioitinh"),rs.getString("CCCD"),rs.getString("Sodienthoai"),rs.getString("Diachi"));
+                modelSinhvien st = new modelSinhvien(rs.getInt("id"),rs.getString("Masinhvien"),rs.getString("Hoten"),rs.getString("Khoa"),rs.getString("Lop"),rs.getString("Gioitinh"),rs.getString("CCCD"),rs.getString("Sodienthoai"),rs.getString("Diachi"));
                 productList.add(st);
             }
         } catch (Exception e) {
@@ -115,7 +116,7 @@ public class controllerSinhvien {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
-                modelSinhvien st = new modelSinhvien(rs.getString("Masinhvien"),rs.getString("Hoten"),rs.getString("Khoa"),rs.getString("Lop"),rs.getString("Gioitinh"),rs.getString("CCCD"),rs.getString("Sodienthoai"),rs.getString("Diachi"));
+                modelSinhvien st = new modelSinhvien(rs.getInt("id"),rs.getString("Masinhvien"),rs.getString("Hoten"),rs.getString("Khoa"),rs.getString("Lop"),rs.getString("Gioitinh"),rs.getString("CCCD"),rs.getString("Sodienthoai"),rs.getString("Diachi"));
                 TimkiemList.add(st);
             }
         } catch (Exception e) {

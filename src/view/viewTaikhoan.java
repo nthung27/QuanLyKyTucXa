@@ -174,15 +174,11 @@ public class viewTaikhoan extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -263,11 +259,7 @@ public class viewTaikhoan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Vui lòng chọn thông tin cần sửa");
             return;
         }
-        if (controllerDangnhap.Checktrungma(mdn)) {
-            mdn.setEmail(e);
-            JOptionPane.showMessageDialog(null, "Email đã được đăng ký trước đó. Vui lòng nhập email mới");
-            return;
-        }
+        
         mdn.setHoten(txtHT.getText());
         mdn.setTaikhoan(txtU.getText()); 
         mdn.setMatkhau(txtP.getText());
