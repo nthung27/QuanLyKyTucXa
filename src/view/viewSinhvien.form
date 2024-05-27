@@ -76,11 +76,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Th&#xf4;ng tin sinh vi&#xea;n">
-                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </TitledBorder>
+                <TitledBorder title="Th&#xf4;ng tin sinh vi&#xea;n"/>
               </Border>
             </Property>
           </Properties>
@@ -235,11 +231,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Thao t&#xe1;c">
-                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder roundedCorners="true"/>
-                  </Border>
-                </TitledBorder>
+                <TitledBorder title="Thao t&#xe1;c"/>
               </Border>
             </Property>
           </Properties>
@@ -333,11 +325,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Chi ti&#x1ebf;t th&#xf4;ng tin sinh vi&#xea;n">
-                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder roundedCorners="true"/>
-                  </Border>
-                </TitledBorder>
+                <TitledBorder title="Chi ti&#x1ebf;t th&#xf4;ng tin sinh vi&#xea;n"/>
               </Border>
             </Property>
           </Properties>

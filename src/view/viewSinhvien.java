@@ -65,7 +65,7 @@ public class viewSinhvien extends javax.swing.JPanel {
         Main5.setPreferredSize(new java.awt.Dimension(886, 639));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thông tin sinh viên"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin sinh viên"));
 
         jLabel1.setText("Mã sinh viên");
 
@@ -147,7 +147,7 @@ public class viewSinhvien extends javax.swing.JPanel {
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Thao tác"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Thao tác"));
 
         btnThem.setText("Thêm sinh viên");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +221,7 @@ public class viewSinhvien extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Chi tiết thông tin sinh viên"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Chi tiết thông tin sinh viên"));
 
         Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -423,9 +423,19 @@ public class viewSinhvien extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
     //Tìm kiếm sinh viên
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
-        modelSinhvien st = new modelSinhvien();
-        st.setHoten(txtHT.getText());
-        showTable(controllerSinhvien.Timkiem(st));
+        String ht = txtHT.getText();
+        if (ht.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chỉ điền Họ Tên để thực hiện chức năng tìm kiếm!");
+            return;
+        }
+        sv.setHoten(txtHT.getText());
+        List<modelSinhvien> results = controllerSinhvien.Timkiem(sv);
+
+        if (results.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không tồn tại dữ liệu sinh viên!");
+        } else {
+            showTable(results);
+        }
     }//GEN-LAST:event_btnTKActionPerformed
     //Reset sinh viên
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

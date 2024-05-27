@@ -311,14 +311,19 @@ public class viewPhong extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
     //Tìm kiếm phòng ở
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
-        String tenPhong = txtTP.getText();
-        if (tenPhong.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không có tên phòng được nhập trong hệ thống");
+        String tp = txtTP.getText();
+        if (tp.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chỉ điền Tên Phòng để thực hiện chức năng tìm kiếm!");
             return;
         }
-        modelPhong po = new modelPhong();
-        po.setTenphong(tenPhong);
-        showTable(controllerPhong.TimKiem(po));
+        p.setTenphong(txtTP.getText());
+        List<modelPhong> results = controllerPhong.TimKiem(p);
+
+        if (results.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không tồn tại dữ liệu phòng ở !");
+        } else {
+            showTable(results);
+        }
     }//GEN-LAST:event_btnTKActionPerformed
     //Reset phòng ở
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
